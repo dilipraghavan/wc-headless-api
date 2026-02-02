@@ -1,0 +1,25 @@
+{
+    "name": "wpshiftstudio/wc-headless-api",
+    "description": "Custom REST API endpoints for headless WooCommerce with JWT authentication",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Dilip Developer",
+            "email": "dilip@wpshiftstudio.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "firebase/php-jwt": "^6.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "WCHeadlessAPI\\": "src/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
