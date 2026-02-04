@@ -12,6 +12,7 @@ namespace WCHeadlessAPI;
 use WCHeadlessAPI\Auth\JWTHandler;
 use WCHeadlessAPI\Auth\AuthMiddleware;
 use WCHeadlessAPI\API\AuthController;
+use WCHeadlessAPI\API\ProductController;
 use WCHeadlessAPI\Helpers\ResponseFormatter;
 
 /**
@@ -78,6 +79,10 @@ class Plugin {
 		// Auth controller.
 		$auth_controller = new AuthController( $this->jwt_handler );
 		$auth_controller->register_routes();
+
+		// Product controller.
+		$product_controller = new ProductController();
+		$product_controller->register_routes();
 	}
 
 	/**
