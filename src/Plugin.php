@@ -13,6 +13,7 @@ use WCHeadlessAPI\Auth\JWTHandler;
 use WCHeadlessAPI\Auth\AuthMiddleware;
 use WCHeadlessAPI\API\AuthController;
 use WCHeadlessAPI\API\ProductController;
+use WCHeadlessAPI\API\WishlistController;
 use WCHeadlessAPI\Helpers\ResponseFormatter;
 
 /**
@@ -83,6 +84,10 @@ class Plugin {
 		// Product controller.
 		$product_controller = new ProductController();
 		$product_controller->register_routes();
+
+		// Wishlist controller.
+		$wishlist_controller = new WishlistController( $this->jwt_handler );
+		$wishlist_controller->register_routes();
 	}
 
 	/**
