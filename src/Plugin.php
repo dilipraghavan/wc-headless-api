@@ -110,19 +110,14 @@ class Plugin {
 	 * @return mixed
 	 */
 	public function send_cors_headers( mixed $value ): mixed {
-		$origin = $this->get_request_origin();
-
-		if ( $this->is_origin_allowed( $origin ) ) {
-			header( 'Access-Control-Allow-Origin: ' . $origin );
-			header( 'Access-Control-Allow-Credentials: true' );
-		}
-
-		header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
-		header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
-		header( 'Access-Control-Max-Age: 86400' );
-
-		return $value;
-	}
+        header( 'Access-Control-Allow-Origin: https://wc-product-browser.vercel.app' );
+        header( 'Access-Control-Allow-Credentials: true' );
+        header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
+        header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
+        header( 'Access-Control-Max-Age: 86400' );
+    
+        return $value;
+    }
 
 	/**
 	 * Handle preflight OPTIONS requests.
@@ -130,22 +125,18 @@ class Plugin {
 	 * @return void
 	 */
 	public function handle_preflight(): void {
-		if ( 'OPTIONS' === $_SERVER['REQUEST_METHOD'] ) {
-			$origin = $this->get_request_origin();
-
-			if ( $this->is_origin_allowed( $origin ) ) {
-				header( 'Access-Control-Allow-Origin: ' . $origin );
-				header( 'Access-Control-Allow-Credentials: true' );
-			}
-
-			header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
-			header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
-			header( 'Access-Control-Max-Age: 86400' );
-			header( 'Content-Length: 0' );
-			header( 'Content-Type: text/plain' );
-			exit;
-		}
-	}
+        if ( 'OPTIONS' === $_SERVER['REQUEST_METHOD'] ) {
+            header( 'Access-Control-Allow-Origin: https://wc-product-browser.vercel.app' );
+            header( 'Access-Control-Allow-Credentials: true' );
+            header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
+            header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
+            header( 'Access-Control-Max-Age: 86400' );
+            header( 'Content-Length: 0' );
+            header( 'Content-Type: text/plain' );
+            status_header( 200 );
+            exit;
+        }
+    }
 
 	/**
 	 * Get request origin.
@@ -177,6 +168,8 @@ class Plugin {
 			array(
 				'http://localhost:3000',
 				'https://localhost:3000',
+				'https://wc-product-browser.vercel.app',
+
 			)
 		);
 
