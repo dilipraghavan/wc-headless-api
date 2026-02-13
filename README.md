@@ -117,7 +117,6 @@ Example: `/wp-json/wc-headless/v1/products?category=hoodies&on_sale=true&orderby
 
 ## Live Demo
 
-- **Backend API:** [techvault.wpshiftstudio.com](https://techvault.wpshiftstudio.com)
 - **Frontend App:** [wc-product-browser.vercel.app](https://wc-product-browser.vercel.app)
 
 ---
